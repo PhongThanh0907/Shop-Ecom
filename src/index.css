@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .width-80 {
+    @apply w-[80%] mx-auto;
+  }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .hover-70 {
+    @apply hover:opacity-60 duration-200 active:opacity-100 cursor-pointer
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+  margin: 0;
+}
+
+.box-shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
+}
+
+.active-menu::before{
+  content: " ";
+  border-bottom-color: #00abc5;
+  position: absolute;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  bottom: 11px;
+  left: 46%;
+  top: 35px;
+  border-bottom-width: 7px;
+  border-bottom-style: solid;
+  transform: translate(-50%, -50%);
+  animation: fadeIn 2s 
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 100%;
+  }
+}
