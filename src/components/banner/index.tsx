@@ -54,7 +54,7 @@ const BannerMemo = () => {
       <div className="absolute bottom-14 left-1/2 gap-4 flex  justify-center ">
         {listBanner.map((slide, slideIndex) => (
           <div
-            key={slideIndex}
+            key={slide}
             onClick={() => goToSlide(slideIndex)}
             className={`text-2xl cursor-pointer `}
           >
