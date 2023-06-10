@@ -9,6 +9,17 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [openMenuMobile, setOpenMenuMobile] = useState<boolean>(false);
   const [openMenuMobileV, setOpenMenuMobileV] = useState<boolean>(false);
+  let timer: number;
+
+  const handleMouseEnter = () => {
+    clearTimeout(timer);
+  };
+
+  const handleMouseLeave = () => {
+    timer = setTimeout(() => {
+      setOpenMenu(false);
+    }, 2000);
+  };
 
   return (
     <div>
@@ -133,7 +144,11 @@ const Header = () => {
           </div>
         </div>
         {openMenu ? (
-          <div className="box-shadow hidden absolute h-20 w-[700px] bg-white top-[68px] left-1/4 lg:flex justify-between px-10 border-t-2 border-t-sky-500 items-center border opacity-100 duration-300">
+          <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="box-shadow hidden absolute h-20 w-[700px] bg-white top-[70px] left-1/4 lg:flex justify-between px-10 border-t-2 border-t-sky-500 items-center border opacity-100 duration-300"
+          >
             {listProductType.map((item, index) => (
               <Link
                 className="mb-2 w-32 hover:bg-gray-100 duration-200 py-2 px-4"

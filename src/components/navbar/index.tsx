@@ -16,12 +16,17 @@ import { listMenuNavbar } from "../../constants";
 
 const Navbar = () => {
   const [openMenuList, setOpenMenuList] = useState<boolean>(false);
+  let timer: number;
 
-  // const moveMouseLeave = () => {
-  //   setTimeout(() => {
-  //     setOpenMenuList(false);
-  //   }, 2000);
-  // };
+  const handleMouseEnter = () => {
+    clearTimeout(timer);
+  };
+
+  const handleMouseLeave = () => {
+    timer = setTimeout(() => {
+      setOpenMenuList(false);
+    }, 2000);
+  };
 
   return (
     <div className="bg-blue">
@@ -37,10 +42,9 @@ const Navbar = () => {
           </div>
           {openMenuList ? (
             <div
-              // onMouseLeave={() => {
-              //   moveMouseLeave();
-              // }}
-              className="absolute bg-white top-[41px] left-0 right-0 border-2 border-blue rounded-b-md h-[340px] py-2 opacity-100 duration-300"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="absolute bg-white top-[41px] left-0 right-0 border-2 border-blue rounded-b-md h-[340px] py-2 opacity-100 duration-300 z-10"
             >
               {listMenuNavbar.map((item, index) => (
                 <div

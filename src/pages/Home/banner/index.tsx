@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
-import { listBanner } from "../../constants";
+import { listBanner } from "../../../constants";
 
 const BannerMemo = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -14,7 +14,6 @@ const BannerMemo = () => {
   const bgImgStyle = {
     transition: "all 1s",
     backgroundImage: `url(${listBanner[currentIndex]})`,
-    height: "100%",
     width: "100%",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -42,16 +41,22 @@ const BannerMemo = () => {
   }, [currentIndex]);
 
   return (
-    <div className="h-[500px] w-full lg:h-[880px] m-auto relative group">
-      <div style={bgImgStyle} className="h-full bg-right bg-cover"></div>
+    <div className="h-[400px] w-full lg:h-[880px] m-auto relative group">
+      <div style={bgImgStyle} className="h-full"></div>
 
       <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-        <HiOutlineChevronLeft className="h-10 w-10" onClick={prevSlide} />
+        <HiOutlineChevronLeft
+          className="h-10 w-10 hover-70"
+          onClick={prevSlide}
+        />
       </div>
       <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-        <HiOutlineChevronRight className="h-10 w-10" onClick={nextSlide} />
+        <HiOutlineChevronRight
+          className="h-10 w-10 hover-70"
+          onClick={nextSlide}
+        />
       </div>
-      <div className="absolute bottom-14 left-1/2 gap-4 flex  justify-center ">
+      <div className="absolute bottom-10 left-0 right-0 lg:bottom-14  gap-4 flex  justify-center ">
         {listBanner.map((slide, slideIndex) => (
           <div
             key={slide}
@@ -61,8 +66,8 @@ const BannerMemo = () => {
             <div
               className={`p-1 rounded-full  ${
                 slideIndex === currentIndex
-                  ? "px-3 bg-blue duration-300"
-                  : "bg-gray-500 duration-300"
+                  ? "px-4 bg-blue duration-300"
+                  : "bg-gray-300 duration-300"
               }`}
             />
           </div>
