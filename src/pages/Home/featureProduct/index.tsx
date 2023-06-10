@@ -9,7 +9,6 @@ interface FeaturedProductsProps {
 }
 
 const FeaturedProductMemo: React.FC<FeaturedProductsProps> = ({ list }) => {
-  console.log(list);
   return (
     <div>
       <TitleComponent title="Sản phẩm nổi bật" />

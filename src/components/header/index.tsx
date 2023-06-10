@@ -147,7 +147,7 @@ const Header = () => {
           <div
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="box-shadow hidden absolute h-20 w-[700px] bg-white top-[70px] left-1/4 lg:flex justify-between px-10 border-t-2 border-t-sky-500 items-center border opacity-100 duration-300"
+            className="box-shadow hidden absolute z-10 h-20 w-[700px] bg-white top-[70px] left-1/4 lg:flex justify-between px-10 border-t-2 border-t-sky-500 items-center border opacity-100 duration-300"
           >
             {listProductType.map((item, index) => (
               <Link

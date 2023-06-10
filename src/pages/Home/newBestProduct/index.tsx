@@ -44,7 +44,7 @@ const NewBestProduct: React.FC<NewBestProductProps> = ({ list }) => {
   };
   const [statusMenu, setStatusMenu] = useState<boolean>(false);
   return (
-    <div>
+    <div className="h-[565px]">
       <div className="flex gap-10 text-xl font-semibold border-b border-gray-300 justify-center">
         <div
           onClick={() => setStatusMenu(false)}

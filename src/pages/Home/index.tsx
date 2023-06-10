@@ -7,6 +7,7 @@ import productService from "../../services/product.service";
 import FeaturedProducts from "./featureProduct";
 import NewBestProduct from "./newBestProduct";
 import ViewedProducts from "./viewedProducts";
+import PromotionProduct from "./promotionProduct";
 
 const HomePage = () => {
   const [productList, setListProduct] = useState<Product[]>([]);
@@ -34,6 +35,7 @@ const HomePage = () => {
         </div>
         <div className="col-span-9">
           <NewBestProduct list={productList.slice(0, 30)} />
+          <PromotionProduct list={productList.slice(12, 18)} />
         </div>
       </div>
     </>

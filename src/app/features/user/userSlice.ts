@@ -23,7 +23,6 @@ export const userSlice = createSlice({
     },
     updateUser: (state: UserState, action) => {
       state.userInfo = action.payload.updatedUser;
-      console.log(state.userInfo);
     },
     logoutUser: (state: UserState) => {
       state.isLoggedIn = false;
