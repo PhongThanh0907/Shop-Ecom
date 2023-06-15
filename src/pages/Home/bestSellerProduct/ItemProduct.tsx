@@ -28,7 +28,7 @@ const ItemProduct: React.FC<ItemProductProps> = ({
   return (
     <React.Fragment>
       {loading ? (
-        <div className="loading h-[450px] w-full lg:w-[224px] "></div>
+        <div className="loading h-[240px] px-4"></div>
       ) : (
         <div className="group h-[240px] px-4 relative border border-white py-5 hover:border hover:border-gray-200 hover:rounded-md hover:shadow-lg duration-200 cursor-pointer flex gap-4">
           <img src={image[0]} alt="image" />

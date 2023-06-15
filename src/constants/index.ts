@@ -32,3 +32,24 @@ export const listBanner = [
   "https://gearshop.vn/images/slider/mua-man-hinh-asus-proart-tang-den-treo-man-hinh-vi1685338384.jpg",
   "https://gearshop.vn/images/slider/mua-ngay-iqunix-graffiti-nhan-qua-cuc-cool-vi1683268877.jpg",
 ];
+
+export const listFooter = [
+  {
+    title: "Thông tin cần biết",
+    label: [
+      "Bảo hành, đổi trả",
+      "Hướng dẫn thanh toán",
+      "Thỏa thuận sử dụng",
+      "Thỏa thuận bảo mật",
+      "Quy chế hoạt động",
+    ],
+  },
+  {
+    title: "Hỗ trợ",
+    label: ["Giới thiệu", "Thông tin liên hệ", "Hỏi đáp", "Tin tức công nghệ"],
+  },
+  {
+    title: "Danh mục",
+    label: ["Phụ kiện", "Chuột", "Bàn phím", "Màn hình", "Laptop"],
+  },
+];

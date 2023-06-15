@@ -10,6 +10,9 @@ import ViewedProducts from "./viewedProducts";
 import PromotionProduct from "./promotionProduct";
 import News from "./news";
 import BestSellerProduct from "./bestSellerProduct";
+import Brands from "../../components/brands";
+import Contact from "../../components/contact";
+import Footer from "../../components/footer";
 
 const HomePage = () => {
   const [productList, setListProduct] = useState<Product[]>([]);
@@ -38,10 +41,13 @@ const HomePage = () => {
         </div>
         <div className="col-span-9">
           <NewBestProduct list={productList.slice(0, 30)} />
-          <PromotionProduct list={productList.slice(12, 18)} />
+          <PromotionProduct list={productList.slice(14, 20)} />
           <BestSellerProduct list={productList.slice(15, 50)} />
         </div>
       </div>
+      <Brands />
+      <Contact />
+      <Footer />
     </>
   );
 };
