@@ -11,20 +11,20 @@ interface ItemPromotionProps {
 const ItemPromotion: React.FC<ItemPromotionProps> = ({ item }) => {
   const [selectedImage, setSelectedImage] = useState(item.imageProduct[0]);
   return (
-    <div className=" lg:grid grid-cols-12 gap-12 h-[400px]">
-      <div className="col-span-5 m-auto">
+    <div className=" grid lg:grid-cols-12 grid-cols-1 lg:gap-12 lg:h-[400px] h-[800px]">
+      <div className="lg:col-span-5 m-auto">
         <img
           className="object-cover h-[80%]"
           src={selectedImage}
           alt="img-product"
         />
       </div>
-      <div className="col-span-2 m-auto">
-        <div className="flex flex-col gap-4 justify-center">
+      <div className="lg:col-span-2 m-auto">
+        <div className="flex lg:flex-col gap-4 justify-center">
           {item.imageProduct.map((item, index) => (
             <img
               onClick={() => setSelectedImage(item)}
-              className="cursor-pointer border-2 border-gray-200 p-2 rounded-md box-shadow"
+              className="cursor-pointer border-2 border-gray-200 p-2 rounded-md box-shadow h-[80px]"
               key={index}
               src={item}
               alt="image"
@@ -32,9 +32,9 @@ const ItemPromotion: React.FC<ItemPromotionProps> = ({ item }) => {
           ))}
         </div>
       </div>
-      <div className="pt-10 border-t border-gray-400 mt-10 text-center col-span-5">
+      <div className="lg:pt-10 pt-4 border-t border-gray-400 mt-10 text-center lg:col-span-5">
         <Link to={`/`}>
-          <h1 className="text-lg text-blue font-semibold h-[84px] overflow-hidden hover-70">
+          <h1 className="text-lg text-blue font-semibold lg:h-[84px] h-[60px] overflow-hidden hover-70">
             {item.productName}
           </h1>
         </Link>

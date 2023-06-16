@@ -30,8 +30,8 @@ const ItemProduct: React.FC<ItemProductProps> = ({
       {loading ? (
         <div className="loading h-[240px] px-4"></div>
       ) : (
-        <div className="group h-[240px] px-4 relative border border-white py-5 hover:border hover:border-gray-200 hover:rounded-md hover:shadow-lg duration-200 cursor-pointer flex gap-4">
-          <img src={image[0]} alt="image" />
+        <div className="group h-[540px] lg:h-[240px] px-4 relative border border-white py-5 hover:border hover:border-gray-200 hover:rounded-md hover:shadow-lg duration-200 cursor-pointer flex flex-col lg:flex-row gap-4">
+          <img className="object-cover" src={image[0]} alt="image" />
           <div>
             <p className="text-sm text-gray-500 uppercase">{brand}</p>
             <h1 className="h-24 overflow-hidden text-blue hover-70">

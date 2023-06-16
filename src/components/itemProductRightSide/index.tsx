@@ -33,8 +33,10 @@ const ItemProductRightSide: React.FC<ItemProductRightSideProps> = ({
         <div className="loading h-[450px] w-full lg:w-[224px] "></div>
       ) : (
         <div className="group h-[450px] border border-white py-5 hover:border hover:border-gray-200 hover:rounded-md hover:shadow-lg duration-200 cursor-pointer">
-          <h1 className="text-gray-400 text-sm uppercase px-4">{brand}</h1>
-          <div className="border-l group-hover:border-transparent border-gray-100 px-4 relative h-[380px]">
+          <h1 className="text-gray-400 text-sm uppercase px-4 text-center lg:text-start">
+            {brand}
+          </h1>
+          <div className="border-l group-hover:border-transparent border-gray-100 px-4 relative h-[380px] text-center lg:text-start">
             <Link
               to={`/products/${id}`}
               className="text-blue-600 font-semibold text-md h-24 overflow-hidden flex hover-70"
@@ -43,11 +45,11 @@ const ItemProductRightSide: React.FC<ItemProductRightSideProps> = ({
             </Link>
 
             <img
-              className="w-[100%] h-[200px] object-cover"
+              className="w-[100%] lg:h-[200px] h-[250px] object-cover"
               src={image[0]}
               alt=""
             />
-            <div className="absolute bottom-0 flex justify-between items-center py-2 pt-6 right-4 left-4">
+            <div className="absolute lg:bottom-0 -bottom-8 flex justify-between items-center py-2 pt-6 lg:right-4 lg:left-4 right-10 left-10">
               <div>
                 <p className="text-gray-400 text-sm line-through">
                   {oldPrice !== 0 && <>{oldPrice?.toLocaleString("vi-VN")}</>}

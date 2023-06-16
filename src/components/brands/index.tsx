@@ -1,4 +1,4 @@
-import React, { useRef, HTMLProps } from "react";
+import { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -55,7 +55,7 @@ const Brands = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -63,7 +63,7 @@ const Brands = () => {
   };
 
   return (
-    <div className="w-[80%] px-10 mx-auto relative py-6 border-t border-b border-gray-300 my-20">
+    <div className="lg:w-[80%] px-10 mx-auto relative py-6 border-t border-b border-gray-300 my-20">
       <Slider {...settings} ref={slideRef}>
         {listBrand.map((item, index) => (
           <div

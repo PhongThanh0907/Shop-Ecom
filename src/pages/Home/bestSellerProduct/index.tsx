@@ -55,7 +55,7 @@ const BestSellerProduct: React.FC<BestSellerProductProps> = ({ list }) => {
     ],
   };
   return (
-    <div className="mt-10 relative">
+    <div className="mt-10 relative pb-20 lg:pb-0">
       <TitleComponent title="Mua nhiều" />
       <div className="mt-8">
         <Slider {...settings}>
@@ -72,12 +72,12 @@ const BestSellerProduct: React.FC<BestSellerProductProps> = ({ list }) => {
           ))}
         </Slider>
       </div>
-      <div className="flex absolute top-0 right-0 gap-4">
+      <div className="flex absolute top-1 lg:top-0 right-0 lg:gap-4 gap-1">
         {dataOption.map((item, index) => (
           <button
             onClick={() => setSelectedOption(item.value)}
             key={index}
-            className={`px-4 py-0.5 pb-1 rounded-full  ${
+            className={`lg:px-4 px-2 py-0.5 pb-1 rounded-full text-sm lg:text-md  ${
               item.value === selectedOption
                 ? "outline outline-2 outline-blue"
                 : "text-gray-400"

@@ -16,7 +16,7 @@ const News = () => {
     },
   ];
   return (
-    <div>
+    <div className="px-4 lg:px-0">
       <TitleComponent title="Tin tức" />
       <div className="flex flex-col gap-6 mt-6">
         {data.map((item, index) => (

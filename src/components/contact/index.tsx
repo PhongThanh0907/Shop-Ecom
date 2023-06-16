@@ -5,8 +5,8 @@ const Contact = () => {
     <div className="text-white bg-blue font-semibold py-6">
       <div className="grid grid-cols-1 lg:grid-cols-5 max-w-7xl px-4 lg:px-10 mx-auto items-center">
         <div className="flex mb-4 lg:mb-0 gap-3 text-lg col-span-3">
-          <BiPaperPlane className="h-6 w-6" />
-          <h1 className="text-sm lg:text-lg">
+          <BiPaperPlane className="lg:h-6 lg:w-6 h-8 w-8" />
+          <h1 className="text-md lg:text-lg">
             GearXShop - Thế Giới Mua Bán Đồ Chơi Công Nghệ, Phụ Kiện Chơi Game
           </h1>
         </div>

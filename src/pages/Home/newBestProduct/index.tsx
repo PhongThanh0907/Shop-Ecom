@@ -16,7 +16,7 @@ const NewBestProduct: React.FC<NewBestProductProps> = ({ list }) => {
     infinite: true,
     speed: 600,
     slidesToShow: 4,
-    autoplay: true,
+    autoplay: false,
     slidesToScroll: 2,
     initialSlide: 0,
     appendDots: (dots: string) => (
