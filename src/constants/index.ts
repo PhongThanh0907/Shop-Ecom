@@ -9,20 +9,79 @@ export const menuHeader = [
 ];
 
 export const listProductType = [
-  { title: "Laptop", link: "/" },
-  { title: "Chuột", link: "/" },
-  { title: "Màn hình", link: "/" },
-  { title: "Bàn phím cơ", link: "/" },
+  {
+    title: "Laptop",
+    link: "/products",
+    stateName: "laptop",
+    stateValue: "laptop",
+  },
+  {
+    title: "Chuột",
+    link: "/products",
+    stateName: "Chuột",
+    stateValue: "mouse",
+  },
+  {
+    title: "Màn hình",
+    link: "/products",
+    stateName: "Màn hình",
+    stateValue: "view",
+  },
+  {
+    title: "Bàn phím cơ",
+    link: "/products",
+    stateName: "Bàn phím",
+    stateValue: "keyboard",
+  },
 ];
 
 export const listMenuNavbar = [
-  { title: "Khuyến mãi", link: "/" },
-  { title: "Sản phẩm bán chạy", link: "/" },
-  { title: "Xây dựng cấu hình", link: "/" },
-  { title: "Bàn phím cơ", link: "/" },
-  { title: "Chuột", link: "/" },
-  { title: "Laptop", link: "/" },
-  { title: "Màn hình máy tính", link: "/" },
+  {
+    title: "Khuyến mãi",
+    link: "/products",
+    stateName: "Bàn phím",
+    stateValue: "keyboard",
+  },
+  {
+    title: "Sản phẩm bán chạy",
+    link: "/products",
+    stateName: "Bàn phím",
+    stateValue: "keyboard",
+  },
+  {
+    title: "Xây dựng cấu hình",
+    link: "/products",
+    stateName: "Bàn phím",
+    stateValue: "keyboard",
+  },
+  {
+    title: "Bàn phím cơ",
+    link: "/products",
+    stateName: "Bàn phím",
+    stateValue: "keyboard",
+    listBrand: ["razer", "logitech", "corsair", "iqunix", "ajazz", "filco"],
+  },
+  {
+    title: "Chuột",
+    link: "/products",
+    stateName: "Chuột",
+    stateValue: "mouse",
+    listBrand: ["logitech", "pulsar", "razer", "asus"],
+  },
+  {
+    title: "Laptop",
+    link: "/products",
+    stateName: "laptop",
+    stateValue: "laptop",
+    listBrand: ["lenovo", "gigabyte", "acer"],
+  },
+  {
+    title: "Màn hình máy tính",
+    link: "/products",
+    stateName: "Màn hình",
+    stateValue: "view",
+    listBrand: ["asus", "gigabyte", "msi", "dell", "samsung"],
+  },
 ];
 
 export const listBanner = [

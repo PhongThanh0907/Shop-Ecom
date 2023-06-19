@@ -4,6 +4,7 @@ export interface Product {
   productCode: string;
   brand: string;
   price: number;
+  code: string;
   imageProduct: string[];
   type: string;
   bestSeller: boolean;

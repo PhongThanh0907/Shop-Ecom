@@ -10,8 +10,8 @@ const productService = {
   getProductDetail: (productID: string) => {
     return axiosConfig.get<Product>(PRODUCT_API.GET_PRODUCT_DETAIL(productID));
   },
-  getProductList: () => {
-    return axiosConfig.get(PRODUCT_API.GET_LIST_PRODUCT);
+  getProductList: (params?: { typeProduct?: string; brand?: string }) => {
+    return axiosConfig.get(PRODUCT_API.GET_LIST_PRODUCT, { params });
   },
 };
 

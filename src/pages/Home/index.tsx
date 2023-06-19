@@ -10,9 +10,6 @@ import ViewedProducts from "./viewedProducts";
 import PromotionProduct from "./promotionProduct";
 import News from "./news";
 import BestSellerProduct from "./bestSellerProduct";
-import Brands from "../../components/brands";
-import Contact from "../../components/contact";
-import Footer from "../../components/footer";
 
 const HomePage = () => {
   const [productList, setListProduct] = useState<Product[]>([]);
@@ -50,9 +47,6 @@ const HomePage = () => {
       <div className="lg:hidden">
         <News />
       </div>
-      <Brands />
-      <Contact />
-      <Footer />
     </>
   );
 };

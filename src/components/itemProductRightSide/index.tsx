@@ -30,7 +30,7 @@ const ItemProductRightSide: React.FC<ItemProductRightSideProps> = ({
   return (
     <React.Fragment>
       {loading ? (
-        <div className="loading h-[450px] w-full lg:w-[224px] "></div>
+        <div className="loading h-[450px] py-5  w-full lg:w-[224px] "></div>
       ) : (
         <div className="group h-[450px] border border-white py-5 hover:border hover:border-gray-200 hover:rounded-md hover:shadow-lg duration-200 cursor-pointer">
           <h1 className="text-gray-400 text-sm uppercase px-4 text-center lg:text-start">

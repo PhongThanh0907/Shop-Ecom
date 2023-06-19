@@ -78,7 +78,15 @@ const Header = () => {
                       {openMenuMobileV ? (
                         <div className="flex flex-col gap-3 h-40 mb-4 border-t-2 border-t-sky-500  border opacity-100 duration-300 w-80 py-3">
                           {listProductType.map((item, index) => (
-                            <Link className="px-8" key={index} to={item.link}>
+                            <Link
+                              className="px-8"
+                              key={index}
+                              to={item.link}
+                              state={{
+                                name: item.stateName,
+                                value: item.stateValue,
+                              }}
+                            >
                               {item.title}
                             </Link>
                           ))}
@@ -151,9 +159,11 @@ const Header = () => {
           >
             {listProductType.map((item, index) => (
               <Link
+                onClick={() => setOpenMenu(false)}
                 className="mb-2 w-32 hover:bg-gray-100 duration-200 py-2 px-4"
                 key={index}
                 to={item.link}
+                state={{ name: item.stateName, value: item.stateValue }}
               >
                 {item.title}
               </Link>
