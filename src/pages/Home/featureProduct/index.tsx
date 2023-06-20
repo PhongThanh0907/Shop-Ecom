@@ -16,6 +16,7 @@ const FeaturedProductMemo: React.FC<FeaturedProductsProps> = ({ list }) => {
         {list.map((item: Product) => (
           <ItemProductLeftSide
             key={item._id}
+            id={item._id}
             productName={item.productName}
             imageProduct={item.imageProduct}
             price={item.price}

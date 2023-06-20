@@ -61,6 +61,7 @@ const ViewedProducts: React.FC<ViewedProductsProps> = ({ list }) => {
           {list.map((item: Product) => (
             <ItemProductLeftSide
               key={item._id}
+              id={item._id}
               brand={item.brand}
               viewed={true}
               productName={item.productName}

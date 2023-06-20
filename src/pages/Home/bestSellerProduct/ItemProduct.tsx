@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdAddShoppingCart } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 interface ItemProductProps {
   id: string;
@@ -11,6 +12,7 @@ interface ItemProductProps {
 }
 
 const ItemProduct: React.FC<ItemProductProps> = ({
+  id,
   brand,
   productName,
   image,
@@ -18,6 +20,10 @@ const ItemProduct: React.FC<ItemProductProps> = ({
   price,
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -32,7 +38,7 @@ const ItemProduct: React.FC<ItemProductProps> = ({
       ) : (
         <div className="group h-[540px] lg:h-[240px] px-4 relative border border-white py-5 hover:border hover:border-gray-200 hover:rounded-md hover:shadow-lg duration-200 cursor-pointer flex flex-col lg:flex-row gap-4">
           <img className="object-cover" src={image[0]} alt="image" />
-          <div>
+          <Link onClick={scrollToTop} to={`product/${id}`}>
             <p className="text-sm text-gray-500 uppercase">{brand}</p>
             <h1 className="h-24 overflow-hidden text-blue hover-70">
               {productName}
@@ -49,7 +55,7 @@ const ItemProduct: React.FC<ItemProductProps> = ({
             <div className="p-2 absolute right-4 bottom-8 opacity-40 bg-blue rounded-full cursor-pointer mr-2 group-hover:opacity-100 duration-300 group-hover:bg-backgroundColor text-white">
               <MdAddShoppingCart className="h-5 w-5" />
             </div>
-          </div>
+          </Link>
         </div>
       )}
     </React.Fragment>

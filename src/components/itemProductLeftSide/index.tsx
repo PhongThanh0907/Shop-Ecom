@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 interface ItemProductLeftSideProps {
+  id: string;
   productName: string;
   brand?: string;
   viewed?: boolean;
@@ -11,6 +12,7 @@ interface ItemProductLeftSideProps {
 }
 
 const ItemProductLeftSide: React.FC<ItemProductLeftSideProps> = ({
+  id,
   brand,
   viewed,
   productName,
@@ -19,6 +21,10 @@ const ItemProductLeftSide: React.FC<ItemProductLeftSideProps> = ({
   imageProduct,
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,8 +43,9 @@ const ItemProductLeftSide: React.FC<ItemProductLeftSideProps> = ({
             src={imageProduct[0]}
             alt="image-product"
           />
+
           <div>
-            <Link to={"/"}>
+            <Link onClick={scrollToTop} to={`/product/${id}`}>
               {viewed && (
                 <h1 className="text-sm text-gray-400 uppercase text-center">
                   {brand}

@@ -21,6 +21,10 @@ const ItemProductRightSide: React.FC<ItemProductRightSideProps> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -38,7 +42,8 @@ const ItemProductRightSide: React.FC<ItemProductRightSideProps> = ({
           </h1>
           <div className="border-l group-hover:border-transparent border-gray-100 px-4 relative h-[380px] text-center lg:text-start">
             <Link
-              to={`/products/${id}`}
+              to={`/product/${id}`}
+              onClick={scrollToTop}
               className="text-blue-600 font-semibold text-md h-24 overflow-hidden flex hover-70"
             >
               {productName}

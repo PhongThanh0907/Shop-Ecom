@@ -7,6 +7,7 @@ import Navbar from "../components/navbar";
 import Brands from "../components/brands";
 import Contact from "../components/contact";
 import Footer from "../components/footer";
+import LoadingButton from "../components/loading/LoadingButton";
 
 const MainLayout = () => {
   return (
@@ -14,7 +15,13 @@ const MainLayout = () => {
       <ToasterProvider />
       <Header />
       <Navbar />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center">
+            <LoadingButton />
+          </div>
+        }
+      >
         <Outlet />
       </Suspense>
       <Brands />

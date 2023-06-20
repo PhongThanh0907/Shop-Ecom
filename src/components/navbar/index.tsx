@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { FormEvent, useCallback, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BsXCircle } from "react-icons/bs";
 import {
   HiOutlineChevronDown,
@@ -16,7 +16,9 @@ import {
 import { listMenuNavbar } from "../../constants";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [openMenuList, setOpenMenuList] = useState<boolean>(false);
+  const [text, setText] = useState("");
   let timer: number;
 
   const handleMouseEnter = () => {
@@ -27,6 +29,11 @@ const Navbar = () => {
     timer = setTimeout(() => {
       setOpenMenuList(false);
     }, 2000);
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate("/products", { state: { searchText: text } });
   };
 
   return (
@@ -50,7 +57,11 @@ const Navbar = () => {
               {listMenuNavbar.map((item, index) => (
                 <Link
                   to={item.link}
-                  state={{ name: item.stateName, typeProduct: item.stateValue, brand: undefined }}
+                  state={{
+                    name: item.stateName,
+                    typeProduct: item.stateValue,
+                    brand: undefined,
+                  }}
                   onClick={() => setOpenMenuList(false)}
                   className={`text-black text-[16px] flex-between mx-3 px-2 py-2  ${
                     index > 3 &&
@@ -107,16 +118,22 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        <div className="flex items-center">
+        <form onSubmit={onSubmit} className="flex items-center">
           <input
             className="focus:outline-none px-8 rounded-l-full py-2 text-gray-500 w-[250px] lg:w-[500px]"
             placeholder="Nội dung tìm kiếm"
             type="text"
+            onChange={(e) => setText(e.target.value)}
           />
-          <div className="text-stone-100 bg-black/70 px-5 py-2 rounded-r-full cursor-pointer hover:bg-black duration-200 active:bg-black/70">
+          <Link
+            to={`products`}
+            state={{ searchText: text }}
+            className="text-stone-100 bg-black/70 px-5 py-2 rounded-r-full cursor-pointer hover:bg-black duration-200 active:bg-black/70"
+          >
             <AiOutlineSearch className="h-6 w-6" />
-          </div>
-        </div>
+          </Link>
+        </form>
+
         <div className="text-stone-100 font-bold gap-4 hidden lg:flex">
           <AiOutlineHeart className="h-7 w-7 hover-70" />
           <AiOutlineUser className="h-7 w-7 hover-70" />

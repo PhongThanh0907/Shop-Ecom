@@ -81,6 +81,10 @@ const Header = () => {
                             <Link
                               className="px-8"
                               key={index}
+                              onClick={() => {
+                                setOpenMenuMobileV(false)
+                                setOpenMenuMobile(false)
+                              } }
                               to={item.link}
                               state={{
                                 name: item.stateName,

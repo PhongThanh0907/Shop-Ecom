@@ -24,17 +24,16 @@ const ProductsPage = () => {
   const [typeSort, setTypeSort] = useState<number>();
   const newArr: [string | undefined] = [""];
   const debouncedValue = useDebounce<string>(price, 1000);
-  console.log(typeSort === 0)
-
 
   const getProductList = useCallback(async () => {
     try {
       const params = {
-        typeProduct: state.typeProduct,
-        brand: brand ? brand : state.brand,
+        typeProduct: state?.typeProduct ? state.typeProduct : undefined,
+        brand: brand ? brand : state?.brand ? state.brand : undefined,
         min: 0,
         max: debouncedValue === "" ? undefined : parseInt(debouncedValue),
-        sort: typeSort === 2 ? undefined : typeSort
+        sort: typeSort === 2 ? undefined : typeSort,
+        searchText: state?.searchText ? state.searchText : undefined
       };
       const res = await productService.getProductList(params);
       setProducts(res.data);
@@ -64,12 +63,12 @@ const ProductsPage = () => {
   }, [state]);
 
   return (
-    <div>
-      <Steps activeStep={1} state={state.name} />
+    <div className="mt-6 lg:mt-0">
+      <Steps activeStep={1} state={state?.name ? state.name : "Sản phẩm"} />
       <div className="grid grid-cols-1 lg:grid-cols-4 max-w-7xl lg:px-10 px-5  py-2 lg:py-4 mx-auto lg:gap-10">
         <div className="col-span-1">
           <div
-            className={`border border-gray-300 lg:py-3 px-6 rounded-md duration-200`}
+            className={`border border-gray-300 lg:py-3 px-6 py-3 rounded-md duration-200`}
             style={{
               height: `${
                 modalMenu ? `${75 + withoutDuplicate.length * 42}px` : "75px"
@@ -83,7 +82,7 @@ const ProductsPage = () => {
               <HiOutlineChevronDown
                 className={`${modalMenu ? "" : "rotate-180"} duration-200`}
               />
-              <h1 className="uppercase text-md font-semibold">{state.name}</h1>
+              <h1 className="uppercase text-md font-semibold">{state?.name ? state.name : "Sản phẩm"}</h1>
             </div>
             {modalMenu ? (
               <div className="flex flex-col opacity-100 duration-300">
@@ -152,7 +151,7 @@ const ProductsPage = () => {
         </div>
         <div className="col-span-3">
           <h1 className="uppercase text-xl mb-3 lg:mb-6 font-semibold">
-            {state.name}
+            {state?.name ? state.name : "Sản phẩm"}
           </h1>
           <div className="flex items-center justify-end lg:justify-between p-4 rounded-xl bg-gray-100">
             <div className="hidden lg:flex lg:ml-2 gap-2 lg:gap-4 items-center">
@@ -185,7 +184,7 @@ const ProductsPage = () => {
 
           <div className="mt-4">
             {!changeGrid ? (
-              <div className="grid grid-cols-4 gap-1">
+              <div className="grid grid-cols-1 lg:grid-cols-4 gap-1">
                 {products.map((item: Product) => (
                   <ItemProductRightSide
                     key={item._id}

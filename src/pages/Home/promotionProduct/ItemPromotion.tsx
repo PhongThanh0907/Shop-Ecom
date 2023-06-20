@@ -10,6 +10,10 @@ interface ItemPromotionProps {
 
 const ItemPromotion: React.FC<ItemPromotionProps> = ({ item }) => {
   const [selectedImage, setSelectedImage] = useState(item.imageProduct[0]);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className=" grid lg:grid-cols-12 grid-cols-1 lg:gap-12 lg:h-[400px] h-[800px]">
       <div className="lg:col-span-5 m-auto">
@@ -33,7 +37,7 @@ const ItemPromotion: React.FC<ItemPromotionProps> = ({ item }) => {
         </div>
       </div>
       <div className="lg:pt-10 pt-4 border-t border-gray-400 mt-10 text-center lg:col-span-5">
-        <Link to={`/`}>
+        <Link onClick={scrollToTop} to={`/product/${item._id}`}>
           <h1 className="text-lg text-blue font-semibold lg:h-[84px] h-[60px] overflow-hidden hover-70">
             {item.productName}
           </h1>

@@ -11,7 +11,7 @@ interface StepsProps {
 const Steps: React.FC<StepsProps> = ({ activeStep, state, nameProduct }) => {
   const navigate = useNavigate();
   return (
-    <div className="flex mb-4 lg:mb-5 flex-wrap lg:max-w-7xl mx-auto px-6 lg:px-7 text-gray-400">
+    <div className="flex mb-4 lg:mb-5 flex-wrap lg:w-[80%] mx-auto px-6 text-gray-400">
       {state || nameProduct ? (
         <>
           {[
