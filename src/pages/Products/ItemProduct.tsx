@@ -14,7 +14,6 @@ interface ItemProductProps {
 }
 
 const ItemProduct: React.FC<ItemProductProps> = ({
-  id,
   brand,
   productName,
   image,

@@ -50,7 +50,7 @@ const Navbar = () => {
               {listMenuNavbar.map((item, index) => (
                 <Link
                   to={item.link}
-                  state={{ name: item.stateName, value: item.stateValue }}
+                  state={{ name: item.stateName, typeProduct: item.stateValue, brand: undefined }}
                   onClick={() => setOpenMenuList(false)}
                   className={`text-black text-[16px] flex-between mx-3 px-2 py-2  ${
                     index > 3 &&
@@ -71,8 +71,8 @@ const Navbar = () => {
                         to={item.link}
                         state={{
                           name: item.stateName,
-                          value: item.stateValue,
-                          type: e,
+                          typeProduct: item.stateValue,
+                          brand: e,
                         }}
                         key={index}
                         className="hover-70 hover:bg-gray-200 px-4 py-2 h-fit"

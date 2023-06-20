@@ -84,7 +84,8 @@ const Header = () => {
                               to={item.link}
                               state={{
                                 name: item.stateName,
-                                value: item.stateValue,
+                                typeProduct: item.stateValue,
+                                brand: undefined
                               }}
                             >
                               {item.title}
@@ -163,7 +164,7 @@ const Header = () => {
                 className="mb-2 w-32 hover:bg-gray-100 duration-200 py-2 px-4"
                 key={index}
                 to={item.link}
-                state={{ name: item.stateName, value: item.stateValue }}
+                state={{ name: item.stateName, typeProduct: item.stateValue, brand: undefined }}
               >
                 {item.title}
               </Link>
