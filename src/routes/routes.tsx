@@ -5,8 +5,9 @@ import MainLayout from "../layouts/MainLayout";
 
 const HomePage = React.lazy(() => import("../pages/Home"));
 const ProductsPage = React.lazy(() => import("../pages/Products"));
-const ProductDetail = React.lazy(() => import("../pages/ProductDetail"))
-const UserPage = React.lazy(() => import("../pages/user"))
+const ProductDetail = React.lazy(() => import("../pages/ProductDetail"));
+const UserPage = React.lazy(() => import("../pages/user"));
+const ResetPassword = React.lazy(() => import("../pages/ResetPassword"));
 
 const router = createBrowserRouter([
   {
@@ -20,12 +21,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <ProductDetail />
+        element: <ProductDetail />,
       },
       {
         path: "/user",
-        element: <UserPage />
-      }
+        element: <UserPage />,
+      },
+      { path: "/resetpassword/:id", element: <ResetPassword /> },
     ],
   },
 ]);
