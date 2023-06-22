@@ -136,7 +136,10 @@ const Navbar = () => {
 
         <div className="text-stone-100 font-bold gap-4 hidden lg:flex">
           <AiOutlineHeart className="h-7 w-7 hover-70" />
-          <AiOutlineUser className="h-7 w-7 hover-70" />
+          <Link to="/user">
+            {" "}
+            <AiOutlineUser className="h-7 w-7 hover-70" />
+          </Link>
           <div className="flex items-center gap-1 hover-70">
             <div className="relative">
               <HiOutlineShoppingBag className="h-7 w-7" />

@@ -6,6 +6,7 @@ import MainLayout from "../layouts/MainLayout";
 const HomePage = React.lazy(() => import("../pages/Home"));
 const ProductsPage = React.lazy(() => import("../pages/Products"));
 const ProductDetail = React.lazy(() => import("../pages/ProductDetail"))
+const UserPage = React.lazy(() => import("../pages/user"))
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <ProductDetail />
+      },
+      {
+        path: "/user",
+        element: <UserPage />
       }
     ],
   },
