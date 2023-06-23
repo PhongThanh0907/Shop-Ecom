@@ -31,8 +31,8 @@ const ResetPassword = () => {
   }, [password, confirmPassword, id, navigate]);
 
   return (
-    <div className="py-16">
-      <div className="w-[40%] mx-auto">
+    <div className="pt-10 lg:pt-16">
+      <div className="lg:w-[40%] w-[95%] mx-auto">
         <div className="bg-blue rounded p-6">
           <form onSubmit={handleSubmit}>
             <p className="text-2xl text-stone-100 text-center mb-6">

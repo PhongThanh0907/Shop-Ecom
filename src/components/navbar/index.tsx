@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BsXCircle } from "react-icons/bs";
 import {
@@ -14,12 +14,17 @@ import {
 } from "react-icons/ai";
 
 import { listMenuNavbar } from "../../constants";
+import { User } from "../../types/user.type";
+import Cart from "../cart";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [openMenuList, setOpenMenuList] = useState<boolean>(false);
+  const [openMenuCart, setOpenMenuCart] = useState<boolean>(false);
   const [text, setText] = useState("");
+  const [userInfo, setUserInfo] = useState<User>();
   let timer: number;
+  const persitUser = localStorage.getItem("persist:user");
 
   const handleMouseEnter = () => {
     clearTimeout(timer);
@@ -36,9 +41,28 @@ const Navbar = () => {
     navigate("/products", { state: { searchText: text } });
   };
 
+  const onCloseModal = useCallback(() => {
+    setOpenMenuCart(false);
+  }, []);
+
+  const handleCart = useCallback(() => {
+    if (!userInfo) {
+      navigate("/user");
+    } else {
+      setOpenMenuCart(true);
+    }
+  }, [navigate, userInfo]);
+
+  useEffect(() => {
+    if (persitUser) {
+      const persistedState = JSON.parse(persitUser);
+      setUserInfo(JSON.parse(persistedState.userInfo));
+    }
+  }, [persitUser]);
+
   return (
     <div className="bg-blue">
-      <div className="w-[80%] mx-auto flex-between lg:py-2 py-5">
+      <div className="w-[80%] mx-auto flex-between lg:py-2 py-5 relative">
         <div className="gap-2 text-stone-100 font-bold text-lg relative hidden lg:inline">
           <div
             onClick={() => setOpenMenuList(!openMenuList)}
@@ -136,11 +160,21 @@ const Navbar = () => {
 
         <div className="text-stone-100 font-bold gap-4 hidden lg:flex">
           <AiOutlineHeart className="h-7 w-7 hover-70" />
-          <Link to="/user">
-            {" "}
-            <AiOutlineUser className="h-7 w-7 hover-70" />
-          </Link>
-          <div className="flex items-center gap-1 hover-70">
+          {userInfo ? (
+            <div className="max-w-[120px] truncate">
+              Chào, {userInfo.userName}
+            </div>
+          ) : (
+            <Link to="/user">
+              {" "}
+              <AiOutlineUser className="h-7 w-7 hover-70" />
+            </Link>
+          )}
+
+          <div
+            onClick={handleCart}
+            className="flex items-center gap-1 hover-70"
+          >
             <div className="relative">
               <HiOutlineShoppingBag className="h-7 w-7" />
               <div className="absolute -bottom-1 right-0 bg-black text-sm rounded-full px-1">
@@ -150,6 +184,7 @@ const Navbar = () => {
             <span>Giỏ hàng</span>
           </div>
         </div>
+        <Cart open={openMenuCart} onClose={onCloseModal} />
       </div>
     </div>
   );

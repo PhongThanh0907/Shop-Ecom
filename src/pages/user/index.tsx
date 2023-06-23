@@ -4,8 +4,10 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { HiChevronDoubleLeft } from "react-icons/hi2";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import userService from "../../services/user.service";
+import { loginUser } from "../../app/features/user/userSlice";
 
 interface IFormInputs {
   userName: string;
@@ -24,6 +26,7 @@ const UserPage = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [findPassword, setFindPassword] = useState<boolean>(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -51,8 +54,15 @@ const UserPage = () => {
               email: data.emailLogin,
               password: data.passwordLogin,
             };
-            await userService.loginUser(dataLogin);
+            const res = await userService.loginUser(dataLogin);
             toast.success("Đăng nhập thành công!");
+            dispatch(
+              loginUser({
+                isLoggedIn: true,
+                token: res.data.accessToken,
+                userInfo: res.data.userData,
+              })
+            );
             navigate("/");
           }
         } else {
@@ -86,8 +96,8 @@ const UserPage = () => {
   }, [status, reset]);
 
   return (
-    <div className="py-16">
-      <div className="w-[40%] mx-auto">
+    <div className=" pt-10 lg:pt-16">
+      <div className="lg:w-[40%] w-[95%] mx-auto">
         <div className="bg-blue rounded p-6">
           <form onSubmit={handleSubmit(onSubmit)}>
             <p className="text-2xl text-stone-100 text-center mb-6">
@@ -295,7 +305,7 @@ const UserPage = () => {
             </div>
           </form>
 
-          <div className="flex justify-between">
+          <div className="flex flex-col lg:flex-row justify-between">
             {!findPassword ? (
               <>
                 <p className="text-sm text-end text-gray-500 mt-3">
