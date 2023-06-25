@@ -80,15 +80,7 @@ const NewBestProduct: React.FC<NewBestProductProps> = ({ list }) => {
           <React.Fragment>
             <Slider {...settings}>
               {list.slice(15, 30).map((item: Product) => (
-                <ItemProductRightSide
-                  key={item._id}
-                  id={item._id}
-                  productName={item.productName}
-                  brand={item.brand}
-                  price={item.price}
-                  oldPrice={item.oldPrice}
-                  image={item.imageProduct}
-                />
+                <ItemProductRightSide item={item} key={item._id} />
               ))}
             </Slider>
           </React.Fragment>
@@ -96,15 +88,7 @@ const NewBestProduct: React.FC<NewBestProductProps> = ({ list }) => {
           <React.Fragment>
             <Slider {...settings}>
               {list.slice(5, 20).map((item: Product) => (
-                <ItemProductRightSide
-                  key={item._id}
-                  id={item._id}
-                  productName={item.productName}
-                  brand={item.brand}
-                  price={item.price}
-                  oldPrice={item.oldPrice}
-                  image={item.imageProduct}
-                />
+                <ItemProductRightSide item={item} key={item._id} />
               ))}
             </Slider>
           </React.Fragment>

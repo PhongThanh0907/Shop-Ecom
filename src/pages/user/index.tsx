@@ -87,7 +87,7 @@ const UserPage = () => {
       reset();
       setIsLoading(false);
     },
-    [status, navigate, findPassword, reset]
+    [status, navigate, findPassword, reset, dispatch]
   );
 
   useEffect(() => {
