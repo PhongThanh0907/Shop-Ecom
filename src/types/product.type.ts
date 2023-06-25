@@ -6,7 +6,7 @@ export interface Product {
   price: number;
   code: string;
   imageProduct: string[];
-  type: string;
+  typeProduct: string;
   bestSeller: boolean;
   description: string;
   oldPrice: number;

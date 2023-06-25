@@ -33,7 +33,7 @@ const ProductsPage = () => {
         min: 0,
         max: debouncedValue === "" ? undefined : parseInt(debouncedValue),
         sort: typeSort === 2 ? undefined : typeSort,
-        searchText: state?.searchText ? state.searchText : undefined
+        searchText: state?.searchText ? state.searchText : undefined,
       };
       const res = await productService.getProductList(params);
       setProducts(res.data);
@@ -58,7 +58,7 @@ const ProductsPage = () => {
   useEffect(() => {
     if (state) {
       setBrand(undefined);
-      setPrice("100000000")
+      setPrice("100000000");
     }
   }, [state]);
 
@@ -82,7 +82,9 @@ const ProductsPage = () => {
               <HiOutlineChevronDown
                 className={`${modalMenu ? "" : "rotate-180"} duration-200`}
               />
-              <h1 className="uppercase text-md font-semibold">{state?.name ? state.name : "Sản phẩm"}</h1>
+              <h1 className="uppercase text-md font-semibold">
+                {state?.name ? state.name : "Sản phẩm"}
+              </h1>
             </div>
             {modalMenu ? (
               <div className="flex flex-col opacity-100 duration-300">
@@ -172,7 +174,9 @@ const ProductsPage = () => {
             <select
               id="filter"
               className="border border-blue rounded-xl py-1 px-2 focus:outline-none focus:shadow-outline text-gray-400 lg:mr-8 sm:mr-2"
-              onChange={(e: ChangeEvent<HTMLSelectElement>) => setTypeSort(parseInt(e.target.value))}
+              onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                setTypeSort(parseInt(e.target.value))
+              }
             >
               <option className="w-[100px]" value="1">
                 Sắp xếp theo
@@ -186,15 +190,7 @@ const ProductsPage = () => {
             {!changeGrid ? (
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-1">
                 {products.map((item: Product) => (
-                  <ItemProductRightSide
-                    key={item._id}
-                    brand={item.brand}
-                    id={item._id}
-                    image={item.imageProduct}
-                    oldPrice={item.oldPrice}
-                    price={item.price}
-                    productName={item.productName}
-                  />
+                  <ItemProductRightSide item={item} key={item._id} />
                 ))}
               </div>
             ) : (

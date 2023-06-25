@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,6 +20,8 @@ const dataOption = [
 
 const BestSellerProduct: React.FC<BestSellerProductProps> = ({ list }) => {
   const [selectedOption, setSelectedOption] = useState<string>("keyboard");
+  const [productList, setProdutList] = useState<Product[]>([]);
+
   const settings = {
     className: "center",
     dots: true,
@@ -54,12 +56,17 @@ const BestSellerProduct: React.FC<BestSellerProductProps> = ({ list }) => {
       },
     ],
   };
+
+  useEffect(() => {
+    setProdutList(list.filter((e) => e.typeProduct === selectedOption));
+  }, [selectedOption, list]);
+
   return (
     <div className="mt-10 relative pb-20 lg:pb-0">
       <TitleComponent title="Mua nhiều" />
       <div className="mt-8">
         <Slider {...settings}>
-          {list.map((item) => (
+          {productList.map((item) => (
             <ItemProduct item={item} />
           ))}
         </Slider>

@@ -58,7 +58,7 @@ const ItemPromotion: React.FC<ItemPromotionProps> = ({ item }) => {
         <CountDown hours={8} minutes={59} seconds={10} />
 
         <button className="text-lg font-semibold text-white bg-blue px-12 rounded-xl py-2 hover:bg-[#0099b1] active:bg-[#3498db] duration-300">
-          <Link className="uppercase" to={`/products/${item._id}`}>
+          <Link className="uppercase" to={`/product/${item._id}`}>
             Mua ngay
           </Link>
         </button>

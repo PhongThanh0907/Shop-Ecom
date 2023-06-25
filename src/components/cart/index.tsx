@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { HiXMark } from "react-icons/hi2";
-
-import { AppDispatch } from "../../app/store";
 
 interface CartProps {
   open: boolean;
@@ -12,7 +8,6 @@ interface CartProps {
 
 const Cart: React.FC<CartProps> = ({ open, onClose }) => {
   const [cart, setCart] = useState<any>();
-  const navigate = useNavigate();
   const persitCart = localStorage.getItem("persist:cart");
 
   useEffect(() => {
@@ -21,8 +16,7 @@ const Cart: React.FC<CartProps> = ({ open, onClose }) => {
       setCart(persistedState);
     }
   }, [persitCart]);
-
-  console.log(cart?.openModal);
+  console.log(cart);
 
   return (
     <React.Fragment>
