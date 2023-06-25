@@ -8,6 +8,7 @@ const ProductsPage = React.lazy(() => import("../pages/Products"));
 const ProductDetail = React.lazy(() => import("../pages/ProductDetail"));
 const UserPage = React.lazy(() => import("../pages/user"));
 const ResetPassword = React.lazy(() => import("../pages/ResetPassword"));
+const PaymentPage = React.lazy(() => import("../pages/Payment"));
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
         element: <UserPage />,
       },
       { path: "/resetpassword/:id", element: <ResetPassword /> },
+      { path: "/payment", element: <PaymentPage /> },
     ],
   },
 ]);

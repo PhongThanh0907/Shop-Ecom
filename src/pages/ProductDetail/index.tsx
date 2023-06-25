@@ -2,16 +2,20 @@ import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 
 import { Product } from "../../types/product.type";
 import productService from "../../services/product.service";
 import Steps from "../../components/steps";
+import { AddCart, OpenModalCart } from "../../app/features/cart/cartSlice";
 
 const ProductDetail = () => {
   const params = useParams();
   const [product, setProduct] = useState<Product>();
+  const [loading, setLoading] = useState<boolean>(false);
   const [changeImage, setChangeImage] = useState<string>("");
   const [indexImage, setIndexImage] = useState<number>(0);
+  const dispatch = useDispatch();
 
   const getProduct = useCallback(async () => {
     try {
@@ -23,6 +27,12 @@ const ProductDetail = () => {
       console.log(error);
     }
   }, [params.id]);
+
+  const handleAddCart = useCallback(() => {
+    setLoading(true);
+    dispatch(OpenModalCart(true));
+    dispatch(AddCart(product));
+  }, [dispatch, product]);
 
   useEffect(() => {
     getProduct();
@@ -114,28 +124,26 @@ const ProductDetail = () => {
             <p className="text-2xl text-red-500 font-semibold pb-3">
               {product?.price?.toLocaleString("vi-VN")}đ
             </p>
-            <p className="text-sm text-gray-500 ">Số lượng:</p>
-            <input
-              type="number"
-              disabled
-              className="focus:outline-none w-[70%] border border-gray-300 rounded-3xl py-2 pl-6 my-2"
-              defaultValue={1}
-            />
-            {/* {openModal ? (
-                <div className="lds-ring my-4 mx-auto">
-                  <div />
-                  <div />
-                  <div />
-                  <div />
-                </div>
-              ) : ( */}
+
             <button
-              //   onClick={() => handleOrder()}
-              className="my-4 text-white flex items-center bg-blue py-3 justify-center gap-2 rounded-3xl font-semibold hover:bg-[#00c0dd] duration-300 active:bg-[#008da3]"
+              onClick={handleAddCart}
+              disabled={loading}
+              className="relative h-11 bg-gray-800 rounded-xl hover-70"
             >
-              <MdAddShoppingCart className="w-6 h-6" /> Mua ngay
+              {loading ? (
+                <div className="lds-ring absolute top-2 left-0 right-0 flex justify-center">
+                  <div className="w-7 h-7" />
+                  <div className="w-7 h-7" />
+                  <div className="w-7 h-7" />
+                  <div className="w-7 h-7" />
+                </div>
+              ) : (
+                <div className="flex justify-center gap-2 text-white">
+                  {" "}
+                  <MdAddShoppingCart className="w-6 h-6" /> Mua ngay
+                </div>
+              )}
             </button>
-            {/* )} */}
           </div>
           <p className="font-semibold pt-4">
             Address:{" "}

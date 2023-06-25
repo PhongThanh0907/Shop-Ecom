@@ -67,7 +67,7 @@ const BestSellerProduct: React.FC<BestSellerProductProps> = ({ list }) => {
       <div className="mt-8">
         <Slider {...settings}>
           {productList.map((item) => (
-            <ItemProduct item={item} />
+            <ItemProduct key={item._id} item={item} />
           ))}
         </Slider>
       </div>

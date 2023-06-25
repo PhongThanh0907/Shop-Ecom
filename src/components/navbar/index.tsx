@@ -12,17 +12,22 @@ import {
   AiOutlineHeart,
   AiOutlineUser,
 } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
 
 import { listMenuNavbar } from "../../constants";
 import { User } from "../../types/user.type";
 import Cart from "../cart";
+import { RootState } from "../../app/store";
+import { OpenModalCart } from "../../app/features/cart/cartSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [openMenuList, setOpenMenuList] = useState<boolean>(false);
-  const [openMenuCart, setOpenMenuCart] = useState<boolean>(false);
   const [text, setText] = useState("");
   const [userInfo, setUserInfo] = useState<User>();
+  const { cart } = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch();
+
   let timer: number;
   const persitUser = localStorage.getItem("persist:user");
 
@@ -41,17 +46,13 @@ const Navbar = () => {
     navigate("/products", { state: { searchText: text } });
   };
 
-  const onCloseModal = useCallback(() => {
-    setOpenMenuCart(false);
-  }, []);
-
   const handleCart = useCallback(() => {
     if (!userInfo) {
       navigate("/user");
     } else {
-      setOpenMenuCart(true);
+      dispatch(OpenModalCart(true));
     }
-  }, [navigate, userInfo]);
+  }, [navigate, userInfo, dispatch]);
 
   useEffect(() => {
     if (persitUser) {
@@ -158,7 +159,7 @@ const Navbar = () => {
           </Link>
         </form>
 
-        <div className="text-stone-100 font-bold gap-4 hidden lg:flex">
+        <div className="text-stone-100 font-bold gap-4 hidden lg:flex lg:items-center">
           <AiOutlineHeart className="h-7 w-7 hover-70" />
           {userInfo ? (
             <div className="max-w-[120px] truncate">
@@ -178,13 +179,13 @@ const Navbar = () => {
             <div className="relative">
               <HiOutlineShoppingBag className="h-7 w-7" />
               <div className="absolute -bottom-1 right-0 bg-black text-sm rounded-full px-1">
-                0
+                {cart.length}
               </div>
             </div>
             <span>Giỏ hàng</span>
           </div>
         </div>
-        <Cart open={openMenuCart} onClose={onCloseModal} />
+        <Cart />
       </div>
     </div>
   );
