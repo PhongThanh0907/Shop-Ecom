@@ -101,21 +101,23 @@ const Navbar = () => {
                   {index > 3 && (
                     <HiOutlineChevronRight className="text-gray-400" />
                   )}
-                  <div className="opacity-0 w-0 overflow-hidden absolute left-[100%] group-hover:w-[700px] group-hover:opacity-100 -top-[1px] bottom-0 duration-300 bg-white border-2 border-blue rounded-b-md grid grid-cols-4 uppercase p-10">
-                    {item.listBrand?.map((e, index) => (
-                      <Link
-                        to={item.link}
-                        state={{
-                          name: item.stateName,
-                          typeProduct: item.stateValue,
-                          brand: e,
-                        }}
-                        key={index}
-                        className="hover-70 hover:bg-gray-200 px-4 py-2 h-fit"
-                      >
-                        {e}
-                      </Link>
-                    ))}
+                  <div className="opacity-0 w-0 overflow-hidden absolute left-[100%] group-hover:w-[700px] group-hover:opacity-100 -top-[1px] bottom-0 duration-300 bg-white border-2 border-blue rounded-b-md uppercase">
+                    <div className="p-10 grid grid-cols-4 ">
+                      {item.listBrand?.map((e, index) => (
+                        <Link
+                          to={item.link}
+                          state={{
+                            name: item.stateName,
+                            typeProduct: item.stateValue,
+                            brand: e,
+                          }}
+                          key={index}
+                          className="hover-70 hover:bg-gray-200 px-4 py-2 h-fit"
+                        >
+                          {e}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </Link>
               ))}

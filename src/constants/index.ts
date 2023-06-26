@@ -38,7 +38,7 @@ export const listProductType = [
 export const listMenuNavbar = [
   {
     title: "Khuyến mãi",
-    link: "/products",
+    link: "/promotion",
     stateName: "Bàn phím",
     stateValue: "keyboard",
   },
