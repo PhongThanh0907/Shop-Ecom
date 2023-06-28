@@ -47,13 +47,10 @@ const PromotionProduct = () => {
     try {
       const res = await productService.getProductList();
       setProducts(res.data);
-      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
   }, []);
-
-  console.log(products);
 
   useEffect(() => {
     getProductList();

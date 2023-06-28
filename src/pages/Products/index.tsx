@@ -196,16 +196,7 @@ const ProductsPage = () => {
             ) : (
               <div className="grid grid-cols-1 gap-2">
                 {products.map((item: Product) => (
-                  <ItemProduct
-                    key={item._id}
-                    brand={item.brand}
-                    id={item._id}
-                    image={item.imageProduct}
-                    oldPrice={item.oldPrice}
-                    price={item.price}
-                    productName={item.productName}
-                    code={item.code}
-                  />
+                  <ItemProduct item={item} key={item._id} />
                 ))}
               </div>
             )}

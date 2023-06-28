@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -8,14 +8,25 @@ import { Product } from "../../types/product.type";
 import productService from "../../services/product.service";
 import Steps from "../../components/steps";
 import { AddCart, OpenModalCart } from "../../app/features/cart/cartSlice";
+import { User } from "../../types/user.type";
 
 const ProductDetail = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState<Product>();
   const [loading, setLoading] = useState<boolean>(false);
   const [changeImage, setChangeImage] = useState<string>("");
   const [indexImage, setIndexImage] = useState<number>(0);
+  const persitUser = localStorage.getItem("persist:user");
+  const [userInfo, setUserInfo] = useState<User>();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (persitUser) {
+      const persistedState = JSON.parse(persitUser);
+      setUserInfo(JSON.parse(persistedState.userInfo));
+    }
+  }, [persitUser]);
 
   const getProduct = useCallback(async () => {
     try {
@@ -29,10 +40,14 @@ const ProductDetail = () => {
   }, [params.id]);
 
   const handleAddCart = useCallback(() => {
-    setLoading(true);
-    dispatch(OpenModalCart(true));
-    dispatch(AddCart(product));
-  }, [dispatch, product]);
+    if (userInfo === null) {
+      navigate("/user");
+    } else {
+      setLoading(true);
+      dispatch(OpenModalCart(true));
+      dispatch(AddCart(product));
+    }
+  }, [dispatch, product, navigate, userInfo]);
 
   useEffect(() => {
     getProduct();
