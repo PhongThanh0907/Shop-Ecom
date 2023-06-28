@@ -39,7 +39,7 @@ const Cart = () => {
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className={`absolute top-[55px] w-96 py-6 -right-28 bg-white border-2 border-blue opacity-100 overflow-hidden duration-300 z-20 shadow-lg`}
+          className={`fixed top-16 lg:absolute lg:top-[55px] lg:w-96 py-6 left-0 lg:left-[72%] right-0 lg:-right-28 bg-white border-2 border-blue opacity-100 overflow-hidden duration-300 z-20 shadow-lg`}
           style={{ height: `${cart.length * 100 + 135}px` }}
         >
           <HiXMark
@@ -90,9 +90,9 @@ const Cart = () => {
               <div className="flex justify-center">
                 <button
                   onClick={() => {
-                    navigate("/payment")
-                    dispatch(OpenModalCart(false))
-                  } }
+                    navigate("/payment");
+                    dispatch(OpenModalCart(false));
+                  }}
                   className="bg-blue px-6 py-2 hover-70 text-stone-100 rounded-md mt-4"
                 >
                   Đặt hàng
@@ -102,7 +102,7 @@ const Cart = () => {
           )}
         </div>
       ) : (
-        <div className="absolute top-[55px] w-96 py-6 -right-28 bg-white border-2 border-blue h-0 opacity-0 duration-300 z-20 shadow-lg overflow-hidden"></div>
+        <div className="fixed lg:h-0 top-16 lg:absolute lg:top-[55px] lg:w-96 py-6 opacity-0 left-0 lg:left-[72%] right-0 lg:-right-28 bg-white border-2 border-blue  duration-300 z-20 shadow-lg overflow-hidden"></div>
       )}
     </React.Fragment>
   );
