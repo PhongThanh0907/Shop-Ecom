@@ -1,17 +1,26 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 import Steps from "../../components/steps";
 import LoadingButton from "../../components/loading/LoadingButton";
 import { RootState } from "../../app/store";
 import { Cart } from "../../types/cart.type";
 import ItemPayment from "./ItemPayment";
+import { RemoveCartLogout } from "../../app/features/cart/cartSlice";
 
 const PaymentPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { cart } = useSelector((state: RootState) => state.cart);
   const [loading, setLoading] = useState<boolean>(true);
+
+  const handleOrder = useCallback(() => {
+    toast.success("Bạn đã đặt hàng thành công");
+    navigate("/");
+    dispatch(RemoveCartLogout());
+  }, [dispatch, navigate]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,7 +64,7 @@ const PaymentPage = () => {
           </div>
           <div className="flex justify-end">
             <button
-              onClick={() => navigate("/products/payment")}
+              onClick={handleOrder}
               className="px-8 py-2 bg-blue text-white font-bold rounded-3xl mt-6 lg:mt-10 mr-8 hover:bg-[#05bedb] active:bg-[#017e92] duration-300"
             >
               Thanh toán ngay
