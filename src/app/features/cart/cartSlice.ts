@@ -12,7 +12,6 @@ const initialState: CartsState = {
   openModal: false,
 };
 
-
 const cartSystem = createSlice({
   name: "cart",
   initialState,
@@ -40,6 +39,10 @@ const cartSystem = createSlice({
       );
       state.cart = newArr;
     },
+    RemoveCartLogout: (state) => {
+      state.cart = [];
+      state.openModal = false;
+    },
     UpdateNumberCount: (state, action) => {
       const index = state.cart.findIndex(
         (item) => item._id === action.payload._id
@@ -56,6 +59,11 @@ const cartSystem = createSlice({
   },
 });
 
-export const { AddCart, RemoveCart, UpdateNumberCount, OpenModalCart } =
-  cartSystem.actions;
+export const {
+  AddCart,
+  RemoveCart,
+  UpdateNumberCount,
+  OpenModalCart,
+  RemoveCartLogout,
+} = cartSystem.actions;
 export default cartSystem.reducer;

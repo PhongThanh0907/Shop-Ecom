@@ -19,8 +19,11 @@ import { listMenuNavbar } from "../../constants";
 import { User } from "../../types/user.type";
 import Cart from "../cart";
 import { RootState } from "../../app/store";
-import { OpenModalCart } from "../../app/features/cart/cartSlice";
-import userService from "../../services/user.service";
+import {
+  OpenModalCart,
+  RemoveCartLogout,
+} from "../../app/features/cart/cartSlice";
+import { logoutUser } from "../../app/features/user/userSlice";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -60,12 +63,15 @@ const Navbar = () => {
 
   const handleLogout = useCallback(async () => {
     try {
-      await userService.logoutUser();
+      dispatch(logoutUser());
+      dispatch(RemoveCartLogout());
+      setUserInfo(undefined);
+      setOpenMenuUser(false);
       toast.success("Bạn đã đăng xuất thành công");
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (persitUser) {
