@@ -112,3 +112,9 @@ export const listFooter = [
     label: ["Phụ kiện", "Chuột", "Bàn phím", "Màn hình", "Laptop"],
   },
 ];
+
+export const listIcon = [
+  "https://github.com/PhongThanh0907/cf-house-clone/blob/main/public/assets/phone.png?raw=true",
+  "https://github.com/PhongThanh0907/cf-house-clone/blob/main/public/assets/zalo.png?raw=true",
+  "https://github.com/PhongThanh0907/cf-house-clone/blob/main/public/assets/logomessage.png?raw=true",
+];

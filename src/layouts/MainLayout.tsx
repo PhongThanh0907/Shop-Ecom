@@ -8,6 +8,7 @@ import Brands from "../components/brands";
 import Contact from "../components/contact";
 import Footer from "../components/footer";
 import LoadingButton from "../components/loading/LoadingButton";
+import StickyRight from "../components/stickyright/StickyRight";
 
 const MainLayout = () => {
   return (
@@ -26,6 +27,9 @@ const MainLayout = () => {
       </Suspense>
       <Brands />
       <Contact />
+      <section className="hidden lg:inline fixed bottom-20 right-4">
+        <StickyRight />
+      </section>
       <Footer />
     </>
   );

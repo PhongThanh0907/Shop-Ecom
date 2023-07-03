@@ -137,6 +137,34 @@ li.slick-active {
   animation-delay: -0.15s;
 }
 
+.img-rotate {
+  animation: rotate 3s linear infinite alternate;
+}
+
+.ring-circle {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  border: 1px solid #9c191e;
+  border-radius: 50%;
+  position: absolute;
+  animation: ring 1s linear infinite;
+}
+
+.ring-background {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
+  border: 15px solid #f3f4f6;
+  border-radius: 50%;
+  position: absolute;
+  animation: ringbackground 1s linear infinite;
+}
+
 @keyframes fadeIn {
   0% {
       opacity: 0;
@@ -185,5 +213,46 @@ li.slick-active {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes ringbackground {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.2, 1.2);
+  }
+}
+
+@keyframes ring {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.5, 1.5);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(8deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(-8deg);
+  }
+  80% {
+    transform: rotate(8deg);
+  }
+  100% {
+    transform: rotate(-8deg);
   }
 }
